@@ -1,50 +1,36 @@
-# Welcome to your Expo app 👋
+# 🛗 SkyLine Residence - Elevador Digital
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+App mobile moderno desenvolvido em **React Native** com **Expo SDK 54**. O projeto apresenta um painel de notícias para moradores, com suporte a modo noturno reativo e atualizações em tempo real via OTA (Over-the-Air).
 
-## Get started
+## 🚀 Tecnologias Utilizadas
+* **React Native / Expo** (Framework)
+* **TypeScript** (Tipagem)
+* **EAS Build & Update** (Infraestrutura e Deploy)
+* **Lucide React Native / Core Components** (Interface)
 
-1. Install dependencies
+---
 
-   ```bash
-   npm install
+## 🛠️ Como Rodar o Projeto (Desenvolvimento)
+
+Se for a primeira vez rodando em uma nova máquina, instale as dependências:
+
+   ```powershell
+   npm install --force
    ```
 
-2. Start the app
+Sempre que você abrir o projeto no Windows, siga estes passos:
 
-   ```bash
+1. **Abra o Terminal** na pasta do projeto:
+   ```powershell
+   cd %USERPROFILE%\Desktop\elevador-news
+   ```
+
+2. **Inicie o Servidor Expo:**
+   ```powershell
    npx expo start
    ```
-
-In the output, you'll find options to open the app in a
-
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
-
-```bash
-npm run reset-project
-```
-
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
-
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+   
+3. **Como Atualizar via OTA**
+   ```powershell
+   eas update --channel production --message "Descreve aqui sua mudança"
+   ```
