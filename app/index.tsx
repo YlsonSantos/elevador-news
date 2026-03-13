@@ -1,56 +1,47 @@
 import React, { useState } from 'react';
-import { ScrollView, StyleSheet, SafeAreaView, StatusBar, View, Text } from 'react-native';
-import { Header } from '../app-example/components/Header';
-import { NewsCard } from '../app-example/components/NewsCard';
+import { View, StyleSheet, Alert, StatusBar, KeyboardAvoidingView, Platform } from 'react-native';
+import { ProfileImage } from '../app-example/components/ProfileImage';
+import { ProfileForm } from '../app-example/components/ProfileForm';
 
 export default function App() {
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  const [nome, setNome] = useState('');
+  const [currentImage, setCurrentImage] = useState('https://github.com/ylsonsantos.png');
 
-  const noticias = [
-    { id: 1, cat: "SOCIAL", t: "Wine & Cheese Night", d: "Venha degustar os melhores vinhos no Lounge Gourmet hoje às 20h." },
-    { id: 2, cat: "INFRA", t: "Academia 24h", d: "Novos equipamentos de alta performance foram instalados no 3º andar." },
-    { id: 3, cat: "AVISO", t: "Limpeza de Fachada", d: "Início dos trabalhos no Bloco A. Mantenha as janelas fechadas." },
-  ];
+  const alternarFoto = () => {
+    const foto1 = 'https://github.com/ylsonsantos.png';
+    const foto2 = 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=200&q=80';
+    setCurrentImage(currentImage === foto1 ? foto2 : foto1);
+  };
+
+  const handleSave = () => {
+    if(!nome) return Alert.alert("Ops!", "Digite um nome antes de salvar.");
+    Alert.alert("Sucesso!", `Perfil de ${nome} atualizado!`);
+  };
 
   return (
-    <SafeAreaView style={[styles.container, isDarkMode ? styles.bgDark : styles.bgLight]}>
-      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      
-      <Header isDark={isDarkMode} toggleTheme={() => setIsDarkMode(!isDarkMode)} />
-
-      <ScrollView contentContainerStyle={styles.scroll} showsVerticalScrollIndicator={false}>
-        <View style={styles.welcomeContainer}>
-          <Text style={[styles.status, isDarkMode ? styles.textGray : styles.textLightGray]}>
-            ● Elevadores operando normalmente
-          </Text>
-        </View>
-
-        {noticias.map((n) => (
-          <NewsCard 
-            key={n.id} 
-            title={n.t} 
-            description={n.d} 
-            category={n.cat} 
-            isDark={isDarkMode} 
-          />
-        ))}
-
-        <Text style={[styles.otaText, isDarkMode ? styles.textGray : styles.textLightGray]}>
-          SYNC: v1.0.4 | ENCRYPTED OTA 🟢
-        </Text>
-      </ScrollView>
-    </SafeAreaView>
+    <KeyboardAvoidingView 
+      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+      style={styles.container}
+    >
+      <StatusBar barStyle="dark-content" />
+      <View style={styles.card}>
+        <ProfileImage url={currentImage} onPress={alternarFoto} />
+        <ProfileForm nome={nome} setNome={setNome} onSave={handleSave} />
+      </View>
+    </KeyboardAvoidingView>
   );
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1 },
-  bgLight: { backgroundColor: '#F8FAFC' },
-  bgDark: { backgroundColor: '#0F172A' },
-  scroll: { padding: 25 },
-  welcomeContainer: { marginBottom: 25 },
-  status: { fontSize: 13, fontWeight: '600', color: '#10B981' },
-  textGray: { color: '#94A3B8' },
-  textLightGray: { color: '#64748B' },
-  otaText: { textAlign: 'center', fontSize: 10, letterSpacing: 1, marginTop: 20, marginBottom: 50, fontWeight: '700' }
+  container: {
+    flex: 1,
+    backgroundColor: '#f8fafc', // Fundo gelo moderno
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  card: {
+    width: '90%',
+    maxWidth: 400,
+    alignItems: 'center',
+  },
 });

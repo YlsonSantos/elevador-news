@@ -1,6 +1,15 @@
-# 🛗 SkyLine Residence - Elevador Digital
+# 👤 Perfil Rápido - Protótipo Social
 
-App mobile moderno desenvolvido em **React Native** com **Expo SDK 54**. O projeto apresenta um painel de notícias para moradores, com suporte a modo noturno reativo e atualizações em tempo real via OTA (Over-the-Air).
+Um aplicativo mobile intuitivo e elegante desenvolvido para capturar e exibir perfis de usuários de forma visualmente atraente. Este projeto foca em uma experiência de usuário (UX) limpa, com layouts responsivos e componentes modulares.
+
+## ✨ Funcionalidades
+
+- **Edição de Perfil:** Campo de texto dinâmico para inserção de nome com sincronização de estado em tempo real.
+- **Visualização de Avatar:** Imagem de perfil circular com suporte a redimensionamento inteligente (`resizeMode`).
+- **Toggle de Foto:** Funcionalidade de alternância entre diferentes fotos de perfil para testes de visualização.
+- **Design Moderno:** Interface baseada em cartões (cards), sombras suaves e paleta de cores focada em legibilidade.
+- **Feedback Instantâneo:** Sistema de alertas para confirmação de salvamento de dados.
+
 
 ## 🚀 Tecnologias Utilizadas
 * **React Native / Expo** (Framework)
